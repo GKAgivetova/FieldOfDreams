@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Thymeleaf Demo</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container text-center">
+        <div>
+            <form th:action="@{/logout}" method="post">
+                <p>
+                    Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    <span sec:authentication="principal.authorities">Roles</span>
+                </p>
+                <input type="submit" value="Sign Out" />
+            </form>
+        </div>
+        <div>
+            <h1>Field of Dreams</h1>
+        </div>
+        <form th:action="@{/rnd_word}" method="get">
+        <div>
+            <input type="submit" value="Start Game" />
+        </div>
+        </form>
+        <div>
+            <p th:text="${answer2}" />
+        </div>
+    </div>
+</body>
+
+</html>

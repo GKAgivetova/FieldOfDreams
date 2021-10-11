@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Thymeleaf Demo</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container text-center">
+        <div>
+            <form th:action="@{/logout}" method="post">
+                <p>
+                    Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    <span sec:authentication="principal.authorities">Roles</span>
+                </p>
+                <input type="submit" value="Sign Out" />
+                <li sec:authorize="isAuthenticated()">Authenticated users can see this</li>
+            </form>
+        </div>
+        <div>
+            <h1>Field of Dreams</h1>
+        </div>
+        <div>
+            <p th:text="${question}" />
+        </div>
+        <div>
+            <p th:text="${answer}" />
+        </div>
+        <form class="row g-3"
+              th:action="@{/index}" method="post"
+              th:object="${chars}">
+            <div class="col-auto">
+                <input type="text" class="form-control" th:field="*{chars1}" placeholder="Enter a character to guess">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Guess</button>
+            </div>
+        </form>
+        <div>
+            <p th:text="${answer2}" />
+        </div>
+    </div>
+</body>
+
+</html>

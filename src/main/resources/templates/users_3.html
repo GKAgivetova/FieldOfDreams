@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Thymeleaf Demo</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<body>
+<h2>Currently logged in users</h2>
+<div th:each="user : ${users}">
+    <p th:text="${user}">user</p>
+</div>
+</body>
+
+</html>
